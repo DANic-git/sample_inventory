@@ -129,7 +129,7 @@ cert_manager_enabled: false
 cert_manager_namespace: "cert-manager"
 
 # MetalLB deployment
-metallb_enabled: true
+metallb_enabled: false
 metallb_ip_range:
   - "192.168.0.100 - 192.168.0.150"
 metallb_version: v0.9.5
