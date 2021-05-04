@@ -1,0 +1,56 @@
+all:
+  hosts:
+    node-1:
+      ansible_host: 192.168.0.201
+      ip: 192.168.0.201
+      access_ip: 192.168.0.201
+      ansible_user: vagrant
+      ansible_ssh_private_key_file: /root/.ssh/id_rsa_vg
+    node-2:
+      ansible_host: 192.168.0.202
+      ip: 192.168.0.202
+      access_ip: 192.168.0.202
+      ansible_user: vagrant
+      ansible_ssh_private_key_file: /root/.ssh/id_rsa_vg
+    node-3:
+      ansible_host: 192.168.0.203
+      ip: 192.168.0.203
+      access_ip: 192.168.0.203
+      ansible_user: vagrant
+      ansible_ssh_private_key_file: /root/.ssh/id_rsa_vg
+    etcd-1:
+      ansible_host: 192.168.0.204
+      ip: 192.168.0.204
+      access_ip: 192.168.0.204
+      ansible_user: vagrant
+      ansible_ssh_private_key_file: /root/.ssh/id_rsa_vg
+    etcd-2:
+      ansible_host: 192.168.0.205
+      ip: 192.168.0.205
+      access_ip: 192.168.0.205
+      ansible_user: vagrant
+      ansible_ssh_private_key_file: /root/.ssh/id_rsa_vg
+    etcd-3:
+      ansible_host: 192.168.0.206
+      ip: 192.168.0.206
+      access_ip: 192.168.0.206
+      ansible_user: vagrant
+      ansible_ssh_private_key_file: /root/.ssh/id_rsa_vg
+  children:
+    kube-master:
+      hosts:
+        node-1:
+        node-2:
+    kube-node:
+      hosts:
+        node-1:
+        node-2:
+    etcd:
+      hosts:
+        node-1:
+    k8s-cluster:
+      children:
+        kube-master:
+        kube-node:
+    calico-rr:
+      hosts: {}
